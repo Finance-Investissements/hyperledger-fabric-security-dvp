@@ -1,23 +1,21 @@
 # Hyperledger Fabricによる証券発行のDvP決済実装
+Ce référentiel implémente le règlement DvP pour l'émission de titres à l'aide d'Hyperledger Fabric.
+Il est créé en supposant une plate-forme qui permet le paiement DvP de titres (Security) et de fonds (Money).
+Comprend l'organisation, les paramètres réseau et le code de chaîne requis pour les paiements DvP pour l'émission de titres.
+Si Docker est installé, vous pouvez facilement créer un réseau et vérifier et organiser le fonctionnement de Chaincode pour les paiements DvP émis par des titres.
 
-## 概要
-本リポジトリはHyperledger Fabricを用いて証券発行のDvP決済を実装したものです。  
-証券(Security)と資金(Money)のDvP決済を行えるプラットフォームを想定して作成しています。  
-証券発行のDvP決済に必要な組織(Organization)やネットワーク設定、Chaincodeが含まれています。  
-Dockerがインストールされている環境であれば簡単にネットワーク構築が行え、証券発行のDvP決済のChaincodeの動作確認・アレンジも可能です。  
+De plus, en utilisant les éléments suivants d'HyperLedger Fabric, il est mis en œuvre pour répondre aux exigences d'organisation et de confidentialité de la plateforme de paiement DvP d'émission de titres envisagée par ce projet.
 
-また、HyperLedger Fabricの下記の要素を利用し、本プロジェクトが想定している証券発行のDvP決済プラットフォームの組織や秘匿性の要件を満たすように実装されています。  
-- ネットワーク構築
-  - OrdererやCA、組織などを１から設定しながらネットワーク構築処理を行うためHyperledger Fabricのネットワーク構築に必要な設定や処理について理解することができます。
-- 新しい組織の追加
-  - すでに形成されているネットワークにスクリプトを用いて新しい組織を設定・追加することができます。
-- Chaincodeの作成・インストール・アップグレード
-  - Hyperledger FabricのスマートコントラクトであるChaincodeはGoで書かれています。リポジトリにはChaincodeのインストールからアップグレードを行うスクリプトが含まれます。
-- Private Dataによる残高秘匿化
-  - Hyperledger Fabricの秘匿化機能であるPrivate Dataを本プロジェクトが想定する証券発行のDvP決済プラットフォーム上の証券及び資金の残高秘匿化に利用しています。また、デモ用のスクリプトが含まれ、実際に秘匿化ができているか検証することができます。
+    Création de réseau
+        Étant donné que le processus de construction du réseau est effectué lors de la configuration du Orderer, de l'autorité de certification, de l'organisation, etc. à partir de zéro, vous pouvez comprendre les paramètres et les processus requis pour la construction du réseau de Hyperledger Fabric.
+    Ajouter une nouvelle organisation
+        Vous pouvez utiliser des scripts pour configurer et ajouter de nouvelles organisations à un réseau déjà formé.
+    Création / installation / mise à niveau du code blockchain
+        Chaincode, un contrat intelligent pour Hyperledger Fabric, est écrit en Go. Le référentiel contient des scripts à mettre à niveau à partir de l'installation de Chaincode.
+    Dissimulation d'équilibre avec des données privées
+        Les données privées, qui sont une fonction de dissimulation d'Hyperledger Fabric, sont utilisées pour dissimuler le solde des titres et des fonds sur la plateforme de règlement DvP pour l'émission de titres envisagée par ce projet. Il comprend également un script de démonstration qui vous permet de vérifier qu'il est bien caché.
 
-
-本プロジェクトでは下記の要素は利用していません。
+Les éléments suivants ne sont pas utilisés dans ce projet.
 - SDK
 - Event
 
